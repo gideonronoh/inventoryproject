@@ -11,9 +11,7 @@ def register(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            group = Group.objects.get(name='Customers')
-            user.groups.add(group)
+            form.save()
             return redirect('user-login')
     else:
         form = CreateUserForm()
